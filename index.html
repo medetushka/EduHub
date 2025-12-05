@@ -3,74 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assyl DataHub - Follow Your Dreams</title>
+    <title>Assyl DataHub - Your Path to Higher Education</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Core Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
-    
-    <!-- Splitting CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <!-- Common Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <style>
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            margin-top: 72px;
+            min-height: calc(100vh - 72px);
             display: flex;
             align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 50%, #3d5a80 100%);
             position: relative;
-            background: linear-gradient(rgba(11, 20, 38, 0.7), rgba(11, 20, 38, 0.7)), url('resources/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 2rem;
-            z-index: 2;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(201, 162, 39, 0.3);
         }
 
         .hero-title {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            min-height: 60px;
+        .hero-title .highlight {
+            color: var(--accent-gold);
         }
 
         .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.25rem;
+        }
+
+        .hero-image {
+            position: relative;
+            min-height: 500px;
+            background: linear-gradient(135deg, #3d5a80 0%, #1e3a5f 100%);
+            border-radius: var(--radius-xl);
+        }
+
+        .hero-image-main {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-large);
+            object-fit: cover;
+            background: linear-gradient(135deg, #4a6fa5 0%, #1e3a5f 100%);
+        }
+
+        .hero-image-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-large);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-image-card.card-1 {
+            top: 10%;
+            right: -20px;
+        }
+
+        .hero-image-card.card-2 {
+            bottom: 15%;
+            left: -20px;
+        }
+
+        .hero-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-navy);
+        }
+
+        .hero-card-text strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .hero-card-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background: var(--bg-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-cream);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
             line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Universities Section */
+        .universities-section {
+            padding: 5rem 0;
+            background: var(--bg-cream);
+        }
+
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .university-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all var(--transition-normal);
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .university-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .university-content {
+            padding: 1.5rem;
+        }
+
+        .university-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .university-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .university-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 1rem;
+        }
+
+        .uni-stat {
+            text-align: center;
+        }
+
+        .uni-stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        .uni-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .university-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .university-actions .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: var(--primary-navy);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
         }
 
         .cta-buttons {
@@ -80,219 +345,109 @@
             flex-wrap: wrap;
         }
 
-        /* University Cards */
-        .universities-section {
+        /* Testimonials */
+        .testimonials-section {
             padding: 5rem 0;
-            background: var(--secondary-bg);
+            background: var(--bg-white);
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-        }
-
-        .universities-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .university-card {
-            background: rgba(26, 35, 50, 0.8);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+        .testimonial-card {
+            background: var(--bg-cream);
             padding: 2rem;
-            transition: all 0.3s ease;
+            border-radius: var(--radius-lg);
             position: relative;
-            overflow: hidden;
         }
 
-        .university-card::before {
-            content: '';
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--accent-gold);
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+            top: 1rem;
+            left: 1.5rem;
+            line-height: 1;
+            font-family: Georgia, serif;
         }
 
-        .university-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-            border-color: var(--accent-cyan);
-        }
-
-        .university-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+        .testimonial-text {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
-        .university-name {
-            font-size: 1.3rem;
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author-info strong {
+            display: block;
             color: var(--text-primary);
         }
 
-        .university-location {
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .testimonial-author-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        .university-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-stat {
+                text-align: center;
+            }
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 8px;
-        }
-
-        .stat-value {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--accent-cyan);
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        .university-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        /* Comparison Panel */
-        .comparison-panel {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--secondary-bg);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 12px;
-            padding: 1rem;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .comparison-panel.show {
-            display: block;
-        }
-
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .close-modal:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* Comparison Table */
-        .comparison-table {
-            display: grid;
-            gap: 1rem;
-            min-width: 600px;
-        }
-
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 150px repeat(var(--uni-count, 3), 1fr);
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .comparison-cell {
-            padding: 1rem;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .comparison-row.header .comparison-cell {
-            background: var(--accent-cyan);
-            color: var(--primary-bg);
-            font-weight: 600;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
+            .hero {
+                margin-top: 120px;
             }
 
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
 
             .universities-grid {
                 grid-template-columns: 1fr;
-                padding: 0 1rem;
-            }
-
-            .comparison-panel {
-                bottom: 1rem;
-                right: 1rem;
-                left: 1rem;
             }
         }
     </style>
@@ -301,17 +456,20 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo font-orbitron">Assyl DataHub</a>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">A</span>
+                Assyl DataHub
+            </a>
             
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link" data-translate="followDreams">FOLLOW YOUR DREAMS</a></li>
-                <li><a href="study-in-kazakhstan.html" class="nav-link" data-translate="studyKazakhstan">STUDY IN KAZAKHSTAN</a></li>
-                <li><a href="study-abroad.html" class="nav-link" data-translate="studyAbroad">STUDY ABROAD</a></li>
-                <li><a href="pricing.html" class="nav-link" data-translate="pricing">PRICING</a></li>
-                <li><a href="contact.html" class="nav-link" data-translate="contact">CONTACT</a></li>
-                <li><a href="profile.html" class="nav-link" id="profileBtn" style="display: none;" data-translate="profile">PROFILE</a></li>
-                <li><a href="#" class="nav-link" id="loginBtn" onclick="showLoginModal()" data-translate="login">LOGIN</a></li>
-                <li><a href="#" class="nav-link" id="logoutBtn" style="display: none;" onclick="window.assylDataHub.logout()" data-translate="logout">LOGOUT</a></li>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="study-in-kazakhstan.html" class="nav-link">Study in Kazakhstan</a></li>
+                <li><a href="study-abroad.html" class="nav-link">Study Abroad</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="profile.html" class="nav-link" id="profileBtn" style="display: none;">Profile</a></li>
+                <li><a href="#" class="nav-link" id="loginBtn" onclick="showLoginModal()">Login</a></li>
+                <li><a href="#" class="nav-link" id="logoutBtn" style="display: none;" onclick="window.assylDataHub.logout()">Logout</a></li>
             </ul>
 
             <div class="lang-switcher">
@@ -324,19 +482,119 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <p style="font-size: 2rem; color: var(--text-primary); margin-bottom: 1rem; text-align: center;">hello world</p>
-            <h1 class="hero-title font-orbitron" data-translate="followDreams">FOLLOW YOUR DREAMS</h1>
-            <div class="hero-subtitle">
-                <span id="typed-text"></span>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <i class="fas fa-graduation-cap"></i> &nbsp;Your Future Starts Here
+                </span>
+                <h1 class="hero-title">
+                    Find Your Perfect <span class="highlight">University</span> Path
+                </h1>
+                <p class="hero-description">
+                    We help students and families navigate the journey to higher education. 
+                    Compare universities, explore programs, and make informed decisions 
+                    about your academic future in Kazakhstan and abroad.
+                </p>
+                <div class="hero-buttons">
+                    <a href="study-in-kazakhstan.html" class="btn btn-accent btn-large">
+                        <i class="fas fa-search"></i> Explore Universities
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary btn-large" style="border-color: white; color: white;">
+                        <i class="fas fa-comments"></i> Get Free Consultation
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">150+</div>
+                        <div class="hero-stat-label">Universities</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">25+</div>
+                        <div class="hero-stat-label">Countries</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">5,000+</div>
+                        <div class="hero-stat-label">Students Helped</div>
+                    </div>
+                </div>
             </div>
-            <p class="hero-description">
-                Discover world-class universities in Kazakhstan and abroad. Compare programs, explore campuses in 3D, 
-                and make informed decisions about your educational future with our comprehensive data hub.
-            </p>
-            <div class="cta-buttons">
-                <a href="study-in-kazakhstan.html" class="btn btn-primary" data-translate="studyKazakhstan">STUDY IN KAZAKHSTAN</a>
-                <a href="study-abroad.html" class="btn btn-secondary" data-translate="studyAbroad">STUDY ABROAD</a>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80" 
+                     alt="Students celebrating graduation" 
+                     class="hero-image-main"
+                     onerror="this.src='https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=600'">
+                <div class="hero-image-card card-1">
+                    <div class="hero-card-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="hero-card-text">
+                        <strong data-translate-card="trusted">Trusted Guidance</strong>
+                        <span data-translate-card="expert">Expert counselors</span>
+                    </div>
+                </div>
+                <div class="hero-image-card card-2">
+                    <div class="hero-card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="hero-card-text">
+                        <strong data-translate-card="success">98% Success Rate</strong>
+                        <span data-translate-card="admission">Admission results</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Assyl DataHub?</h2>
+                <p>We make the university search and application process simple, transparent, and stress-free for students and families.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Comprehensive Database</h3>
+                    <p>Access detailed information about universities in Kazakhstan and 25+ countries worldwide, all in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Easy Comparison</h3>
+                    <p>Compare tuition fees, rankings, programs, and student life across multiple universities side by side.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Expert Guidance</h3>
+                    <p>Get personalized advice from experienced counselors who understand the admission process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Application Support</h3>
+                    <p>Step-by-step assistance with documents, essays, and everything you need for a successful application.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Multilingual Support</h3>
+                    <p>Available in English, Russian, and Kazakh to serve our diverse community of students and parents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Scholarship Information</h3>
+                    <p>Discover scholarship opportunities and financial aid options to make education more affordable.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -344,207 +602,329 @@
     <!-- Featured Universities -->
     <section class="universities-section">
         <div class="container">
-            <h2 class="section-title" data-translate="compare">Compare Top Universities</h2>
+            <div class="section-title">
+                <h2>Featured Universities</h2>
+                <p>Explore top-rated institutions that have helped thousands of students achieve their dreams.</p>
+            </div>
             
             <div class="universities-grid">
                 <!-- Al-Farabi Kazakh National University -->
-                <div class="university-card fade-in-up">
-                    <img src="https://kimi-web-img.moonshot.cn/img/argroupofeducation.com/511392b3adf8cd1d6e79bc2a39df307261dd6482.jpg" 
+                <div class="university-card">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=500&h=300&fit=crop" 
                          alt="Al-Farabi Kazakh National University" class="university-image">
-                    <h3 class="university-name">Al-Farabi Kazakh National University</h3>
-                    <p class="university-location">Almaty, Kazakhstan</p>
-                    
-                    <div class="university-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">20,000</div>
-                            <div class="stat-label" data-translate="students">Students</div>
+                    <div class="university-content">
+                        <h3 class="university-name">Al-Farabi Kazakh National University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Almaty, Kazakhstan
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">#166</div>
-                            <div class="stat-label" data-translate="world">World Ranking</div>
+                        
+                        <div class="university-stats">
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">20,000</div>
+                                <div class="uni-stat-label">Students</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">#166</div>
+                                <div class="uni-stat-label">World Rank</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">3,000</div>
+                                <div class="uni-stat-label">International</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">1934</div>
+                                <div class="uni-stat-label">Founded</div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">3,000</div>
-                            <div class="stat-label" data-translate="international">International</div>
+                        
+                        <div class="university-actions">
+                            <a href="study-in-kazakhstan.html#kaznu" class="btn btn-primary btn-small">View Details</a>
+                            <button class="btn btn-secondary btn-small">
+                                <i class="fas fa-plus"></i> Compare
+                            </button>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">1934</div>
-                            <div class="stat-label" data-translate="founded">Founded</div>
-                        </div>
-                    </div>
-                    
-                    <div class="university-actions">
-                        <a href="study-in-kazakhstan.html#kaznu" class="btn btn-primary btn-small">View Details</a>
-                        <label class="btn btn-secondary btn-small">
-                            <input type="checkbox" class="university-select" data-university-id="kaznu" style="display: none;">
-                            <span data-translate="selectUniversity">Select</span>
-                        </label>
                     </div>
                 </div>
 
                 <!-- Nazarbayev University -->
-                <div class="university-card fade-in-up">
-                    <img src="https://kimi-web-img.moonshot.cn/img/airial.travel/b413baf6646e349f9c926b4b782a8a5a1b8a5870" 
+                <div class="university-card">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=300&fit=crop" 
                          alt="Nazarbayev University" class="university-image">
-                    <h3 class="university-name">Nazarbayev University</h3>
-                    <p class="university-location">Astana, Kazakhstan</p>
-                    
-                    <div class="university-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">9,000</div>
-                            <div class="stat-label" data-translate="students">Students</div>
+                    <div class="university-content">
+                        <h3 class="university-name">Nazarbayev University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Astana, Kazakhstan
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">#400</div>
-                            <div class="stat-label" data-translate="world">World Ranking</div>
+                        
+                        <div class="university-stats">
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">9,000</div>
+                                <div class="uni-stat-label">Students</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">#400</div>
+                                <div class="uni-stat-label">World Rank</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">1,200</div>
+                                <div class="uni-stat-label">International</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">2010</div>
+                                <div class="uni-stat-label">Founded</div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">1,200</div>
-                            <div class="stat-label" data-translate="international">International</div>
+                        
+                        <div class="university-actions">
+                            <a href="study-in-kazakhstan.html#nazarbayev" class="btn btn-primary btn-small">View Details</a>
+                            <button class="btn btn-secondary btn-small">
+                                <i class="fas fa-plus"></i> Compare
+                            </button>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">2010</div>
-                            <div class="stat-label" data-translate="founded">Founded</div>
-                        </div>
-                    </div>
-                    
-                    <div class="university-actions">
-                        <a href="study-in-kazakhstan.html#nazarbayev" class="btn btn-primary btn-small">View Details</a>
-                        <label class="btn btn-secondary btn-small">
-                            <input type="checkbox" class="university-select" data-university-id="nazarbayev" style="display: none;">
-                            <span data-translate="selectUniversity">Select</span>
-                        </label>
                     </div>
                 </div>
 
-                <!-- Kazakh National Medical University -->
-                <div class="university-card fade-in-up">
-                    <img src="https://kimi-web-img.moonshot.cn/img/nissanstudyservices.com/721e2876de3ed1da40552a05041125f80fe6aacb.webp" 
+                <!-- Medical University -->
+                <div class="university-card">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=500&h=300&fit=crop" 
                          alt="Kazakh National Medical University" class="university-image">
-                    <h3 class="university-name">Asfendiyarov Kazakh National Medical University</h3>
-                    <p class="university-location">Almaty, Kazakhstan</p>
-                    
-                    <div class="university-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">10,378</div>
-                            <div class="stat-label" data-translate="students">Students</div>
+                    <div class="university-content">
+                        <h3 class="university-name">Kazakh National Medical University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Almaty, Kazakhstan
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">#1000</div>
-                            <div class="stat-label" data-translate="world">World Ranking</div>
+                        
+                        <div class="university-stats">
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">10,378</div>
+                                <div class="uni-stat-label">Students</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">#1000</div>
+                                <div class="uni-stat-label">World Rank</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">1,773</div>
+                                <div class="uni-stat-label">International</div>
+                            </div>
+                            <div class="uni-stat">
+                                <div class="uni-stat-value">1930</div>
+                                <div class="uni-stat-label">Founded</div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">1,773</div>
-                            <div class="stat-label" data-translate="international">International</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">1930</div>
-                            <div class="stat-label" data-translate="founded">Founded</div>
+                        
+                        <div class="university-actions">
+                            <a href="study-in-kazakhstan.html#kaznmu" class="btn btn-primary btn-small">View Details</a>
+                            <button class="btn btn-secondary btn-small">
+                                <i class="fas fa-plus"></i> Compare
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="university-actions">
-                        <a href="study-in-kazakhstan.html#kaznmu" class="btn btn-primary btn-small">View Details</a>
-                        <label class="btn btn-secondary btn-small">
-                            <input type="checkbox" class="university-select" data-university-id="kaznmu" style="display: none;">
-                            <span data-translate="selectUniversity">Select</span>
-                        </label>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="study-in-kazakhstan.html" class="btn btn-primary btn-large">
+                    View All Universities <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Families Say</h2>
+                <p>Hear from students and parents who found their perfect university match with our help.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">
+                        Assyl DataHub made the overwhelming process of choosing a university so much easier. 
+                        The comparison tools helped us understand exactly what each school offered.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AK</div>
+                        <div class="testimonial-author-info">
+                            <strong>Aigerim Kenzhebekova</strong>
+                            <span>Parent • Almaty</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">
+                        The counselors understood my goals and helped me find universities I never would have 
+                        discovered on my own. I'm now studying at my dream school in Germany!
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DM</div>
+                        <div class="testimonial-author-info">
+                            <strong>Daniyar Mukhtarov</strong>
+                            <span>Student • Currently in Munich</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">
+                        As a parent, I appreciated the transparent information about costs, scholarships, and 
+                        living expenses. It helped us plan properly for our daughter's education abroad.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SN</div>
+                        <div class="testimonial-author-info">
+                            <strong>Serik Nurpeisov</strong>
+                            <span>Parent • Astana</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Panel -->
-    <div class="comparison-panel" id="compareBtn">
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <span data-translate="compareSelected">Compare Selected</span>
-            <span id="selectedCount" style="background: var(--accent-cyan); color: var(--primary-bg); padding: 0.2rem 0.5rem; border-radius: 50%; font-size: 0.8rem;">0</span>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>
+                    Get personalized university recommendations and expert guidance. 
+                    Book a free consultation with our education counselors today.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-accent btn-large">
+                        <i class="fas fa-calendar-alt"></i> Book Free Consultation
+                    </a>
+                    <a href="pricing.html" class="btn btn-secondary btn-large" style="border-color: white; color: white;">
+                        View Our Services
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Assyl DataHub</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Empowering students and families to make informed decisions about higher education since 2020.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="study-in-kazakhstan.html">Study in Kazakhstan</a></li>
+                        <li><a href="study-abroad.html">Study Abroad</a></li>
+                        <li><a href="pricing.html">Our Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Application Guide</a></li>
+                        <li><a href="#">Scholarship Database</a></li>
+                        <li><a href="#">Student Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> info@assyldatahub.kz</li>
+                        <li><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +7 (727) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i> Almaty, Kazakhstan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Assyl DataHub. All rights reserved. Empowering educational choices through technology.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Login Modal -->
     <div class="modal" id="loginModal">
-        <div class="modal-content" style="max-width: 400px;">
-            <button class="close-modal" onclick="hideLoginModal()">&times;</button>
-            <h2 style="margin-bottom: 2rem; text-align: center;" data-translate="login">Login</h2>
-            <form id="loginForm">
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Email or Phone</label>
-                    <input type="text" id="emailOrPhone" required 
-                           style="width: 100%; padding: 0.8rem; background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);">
-                </div>
-                <div style="margin-bottom: 2rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary);">Password</label>
-                    <input type="password" id="password" required 
-                           style="width: 100%; padding: 0.8rem; background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);">
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;" data-translate="login">Login</button>
-            </form>
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideLoginModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email or Phone</label>
+                        <input type="text" id="emailOrPhone" class="form-input" required placeholder="Enter your email or phone">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="password" class="form-input" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
         </div>
     </div>
-
-    <!-- Comparison Modal -->
-    <div class="modal" id="comparisonModal">
-        <div class="modal-content" style="width: 90%; max-width: 1000px;">
-            <button class="close-modal">&times;</button>
-            <h2 style="margin-bottom: 2rem; text-align: center;" data-translate="compare">University Comparison</h2>
-            <div id="comparisonContent"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer style="background: var(--secondary-bg); padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <p style="color: var(--text-secondary);">&copy; 2025 Assyl DataHub. Empowering educational choices through technology.</p>
-        </div>
-    </footer>
 
     <!-- Main JavaScript -->
     <script src="main.js"></script>
     
     <script>
-        // Additional page-specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize university selection
-            document.querySelectorAll('.university-select').forEach(checkbox => {
-                checkbox.addEventListener('change', function(e) {
-                    const universityId = e.target.dataset.universityId;
-                    if (window.assylDataHub) {
-                        window.assylDataHub.toggleUniversitySelection(universityId);
-                    }
-                });
-            });
-
-            // Initialize comparison modal
-            const compareBtn = document.getElementById('compareBtn');
-            if (compareBtn) {
-                compareBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (window.assylDataHub) {
-                        window.assylDataHub.showComparison();
-                    }
-                });
+        // Login modal functions
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             }
+        }
 
-            // Close modal functionality
-            document.querySelectorAll('.close-modal').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const modal = this.closest('.modal');
-                    if (modal) {
-                        modal.style.display = 'none';
-                    }
-                });
-            });
+        function hideLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
 
-            // Close modal on outside click
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.style.display = 'none';
-                    }
-                });
-            });
+        // Close modal on outside click (click on overlay)
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideLoginModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideLoginModal();
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
     </script>
 </body>

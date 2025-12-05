@@ -218,17 +218,34 @@ class AssylDataHub {
 
     // Language Management
     setupLanguageSwitcher() {
-        const langButtons = document.querySelectorAll('[data-lang]');
+        const langButtons = document.querySelectorAll('.lang-btn[data-lang]');
         langButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.switchLanguage(btn.dataset.lang);
+                const lang = btn.dataset.lang;
+                
+                // Update active state on all language buttons
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.switchLanguage(lang);
             });
         });
+        
+        // Load saved language preference
+        const savedLang = localStorage.getItem('assylLanguage');
+        if (savedLang) {
+            this.currentLanguage = savedLang;
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === savedLang);
+            });
+            this.updateUI();
+        }
     }
 
     switchLanguage(lang) {
         this.currentLanguage = lang;
+        localStorage.setItem('assylLanguage', lang);
         this.updateUI();
         this.saveUserPreference('language', lang);
     }
@@ -268,6 +285,11 @@ class AssylDataHub {
         this.userData.currentUser = this.currentUser;
         this.saveUserData();
         this.updateProfileUI();
+        
+        // Hide login modal after successful login
+        hideLoginModal();
+        showNotification('Welcome! You are now logged in.', 'success');
+        
         return true;
     }
 
@@ -420,13 +442,283 @@ class AssylDataHub {
 
     // UI Updates
     updateUI() {
-        // Update all translatable elements
+        // Update all translatable elements with data-translate attribute
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.dataset.translate;
             element.textContent = this.t(key);
         });
 
+        // Update navigation links
+        const navTranslations = {
+            en: { home: 'Home', studyKz: 'Study in Kazakhstan', studyAbroad: 'Study Abroad', pricing: 'Pricing', contact: 'Contact', profile: 'Profile', login: 'Login', logout: 'Logout' },
+            ru: { home: 'Главная', studyKz: 'Учеба в Казахстане', studyAbroad: 'Учеба за рубежом', pricing: 'Цены', contact: 'Контакты', profile: 'Профиль', login: 'Войти', logout: 'Выйти' },
+            kz: { home: 'Басты бет', studyKz: 'Қазақстанда оқу', studyAbroad: 'Шетелде оқу', pricing: 'Бағалар', contact: 'Байланыс', profile: 'Профиль', login: 'Кіру', logout: 'Шығу' }
+        };
+
+        const nav = navTranslations[this.currentLanguage];
+        if (nav) {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href') || '';
+                if (href.includes('index.html') || (href === 'index.html')) link.textContent = nav.home;
+                else if (href.includes('study-in-kazakhstan')) link.textContent = nav.studyKz;
+                else if (href.includes('study-abroad')) link.textContent = nav.studyAbroad;
+                else if (href.includes('pricing')) link.textContent = nav.pricing;
+                else if (href.includes('contact')) link.textContent = nav.contact;
+                else if (link.id === 'profileBtn') link.textContent = nav.profile;
+                else if (link.id === 'loginBtn') link.textContent = nav.login;
+                else if (link.id === 'logoutBtn') link.textContent = nav.logout;
+            });
+        }
+
+        // Update hero section if on index page
+        this.translateHeroSection();
+
         this.updateProfileUI();
+    }
+
+    translateHeroSection() {
+        const heroTranslations = {
+            en: {
+                badge: 'Your Future Starts Here',
+                title: 'Find Your Perfect',
+                titleHighlight: 'University',
+                titleEnd: 'Path',
+                description: 'We help students and families navigate the journey to higher education. Compare universities, explore programs, and make informed decisions about your academic future in Kazakhstan and abroad.',
+                exploreBtn: 'Explore Universities',
+                consultBtn: 'Get Free Consultation',
+                stat1: 'Universities',
+                stat2: 'Countries',
+                stat3: 'Students Helped'
+            },
+            ru: {
+                badge: 'Ваше будущее начинается здесь',
+                title: 'Найдите свой идеальный',
+                titleHighlight: 'Университет',
+                titleEnd: 'Путь',
+                description: 'Мы помогаем студентам и семьям ориентироваться на пути к высшему образованию. Сравнивайте университеты, изучайте программы и принимайте обоснованные решения о вашем академическом будущем в Казахстане и за рубежом.',
+                exploreBtn: 'Исследовать университеты',
+                consultBtn: 'Бесплатная консультация',
+                stat1: 'Университетов',
+                stat2: 'Стран',
+                stat3: 'Помогли студентам'
+            },
+            kz: {
+                badge: 'Сіздің болашағыңыз осы жерден басталады',
+                title: 'Өзіңіздің керемет',
+                titleHighlight: 'Университет',
+                titleEnd: 'Жолыңызды табыңыз',
+                description: 'Біз студенттер мен отбасыларға жоғары білімге бару жолында көмектесеміз. Университеттерді салыстырыңыз, бағдарламаларды зерттеңіз және Қазақстанда және шетелде академиялық болашағыңыз туралы шешім қабылдаңыз.',
+                exploreBtn: 'Университеттерді қарау',
+                consultBtn: 'Тегін кеңес алу',
+                stat1: 'Университеттер',
+                stat2: 'Елдер',
+                stat3: 'Студенттерге көмектестік'
+            }
+        };
+
+        const t = heroTranslations[this.currentLanguage];
+        if (!t) return;
+
+        // Update hero badge
+        const badge = document.querySelector('.hero-badge');
+        if (badge) {
+            badge.innerHTML = '<i class="fas fa-graduation-cap"></i> &nbsp;' + t.badge;
+        }
+
+        // Update hero title
+        const title = document.querySelector('.hero-title');
+        if (title) {
+            title.innerHTML = t.title + ' <span class="highlight">' + t.titleHighlight + '</span> ' + t.titleEnd;
+        }
+
+        // Update hero description
+        const desc = document.querySelector('.hero-description');
+        if (desc) {
+            desc.textContent = t.description;
+        }
+
+        // Update hero buttons
+        const buttons = document.querySelectorAll('.hero-buttons .btn');
+        if (buttons.length >= 2) {
+            buttons[0].innerHTML = '<i class="fas fa-search"></i> ' + t.exploreBtn;
+            buttons[1].innerHTML = '<i class="fas fa-comments"></i> ' + t.consultBtn;
+        }
+
+        // Update stat labels
+        const statLabels = document.querySelectorAll('.hero-stat-label');
+        if (statLabels.length >= 3) {
+            statLabels[0].textContent = t.stat1;
+            statLabels[1].textContent = t.stat2;
+            statLabels[2].textContent = t.stat3;
+        }
+
+        // Update floating cards
+        const cardTranslations = {
+            en: { trusted: 'Trusted Guidance', expert: 'Expert counselors', success: '98% Success Rate', admission: 'Admission results' },
+            ru: { trusted: 'Надежное руководство', expert: 'Опытные консультанты', success: '98% Успешность', admission: 'Результаты поступления' },
+            kz: { trusted: 'Сенімді нұсқаулық', expert: 'Тәжірибелі кеңесшілер', success: '98% Сәттілік', admission: 'Түсу нәтижелері' }
+        };
+
+        const cards = cardTranslations[this.currentLanguage];
+        if (cards) {
+            document.querySelectorAll('[data-translate-card]').forEach(el => {
+                const key = el.dataset.translateCard;
+                if (cards[key]) el.textContent = cards[key];
+            });
+        }
+
+        // Translate section titles
+        this.translateSections();
+    }
+
+    translateSections() {
+        const sectionTranslations = {
+            en: {
+                whyChoose: 'Why Choose Assyl DataHub?',
+                whyChooseDesc: 'We make the university search and application process simple, transparent, and stress-free for students and families.',
+                featuredUni: 'Featured Universities',
+                featuredUniDesc: 'Explore top-rated institutions that have helped thousands of students achieve their dreams.',
+                testimonials: 'What Families Say',
+                testimonialsDesc: 'Hear from students and parents who found their perfect university match with our help.',
+                ctaTitle: 'Ready to Start Your Journey?',
+                ctaDesc: 'Get personalized university recommendations and expert guidance. Book a free consultation with our education counselors today.',
+                ctaBtn1: 'Book Free Consultation',
+                ctaBtn2: 'View Our Services',
+                viewAll: 'View All Universities'
+            },
+            ru: {
+                whyChoose: 'Почему выбирают Assyl DataHub?',
+                whyChooseDesc: 'Мы делаем процесс поиска и поступления в университет простым, прозрачным и без стресса для студентов и семей.',
+                featuredUni: 'Рекомендуемые университеты',
+                featuredUniDesc: 'Изучите лучшие учебные заведения, которые помогли тысячам студентов осуществить свои мечты.',
+                testimonials: 'Отзывы семей',
+                testimonialsDesc: 'Узнайте от студентов и родителей, которые нашли идеальный университет с нашей помощью.',
+                ctaTitle: 'Готовы начать свой путь?',
+                ctaDesc: 'Получите персональные рекомендации по университетам и экспертное руководство. Запишитесь на бесплатную консультацию сегодня.',
+                ctaBtn1: 'Записаться на консультацию',
+                ctaBtn2: 'Наши услуги',
+                viewAll: 'Все университеты'
+            },
+            kz: {
+                whyChoose: 'Неге Assyl DataHub таңдайсыз?',
+                whyChooseDesc: 'Біз университетті іздеу және түсу процесін студенттер мен отбасылар үшін қарапайым, ашық және стресссіз етеміз.',
+                featuredUni: 'Ұсынылған университеттер',
+                featuredUniDesc: 'Мыңдаған студенттердің армандарын жүзеге асыруға көмектескен үздік оқу орындарын зерттеңіз.',
+                testimonials: 'Отбасылар не дейді',
+                testimonialsDesc: 'Біздің көмегімізбен тамаша университет тапқан студенттер мен ата-аналардан естіңіз.',
+                ctaTitle: 'Сапарыңызды бастауға дайынсыз ба?',
+                ctaDesc: 'Жеке университет ұсыныстары мен сарапшылық нұсқаулықтарын алыңыз. Бүгін тегін кеңесті брондаңыз.',
+                ctaBtn1: 'Тегін кеңес алу',
+                ctaBtn2: 'Біздің қызметтер',
+                viewAll: 'Барлық университеттер'
+            }
+        };
+
+        const t = sectionTranslations[this.currentLanguage];
+        if (!t) return;
+
+        // Update section titles
+        const sectionTitles = document.querySelectorAll('.section-title');
+        sectionTitles.forEach((section, index) => {
+            const h2 = section.querySelector('h2');
+            const p = section.querySelector('p');
+            
+            if (index === 0 && h2) { // Features section
+                h2.textContent = t.whyChoose;
+                if (p) p.textContent = t.whyChooseDesc;
+            } else if (index === 1 && h2) { // Universities section
+                h2.textContent = t.featuredUni;
+                if (p) p.textContent = t.featuredUniDesc;
+            } else if (index === 2 && h2) { // Testimonials section
+                h2.textContent = t.testimonials;
+                if (p) p.textContent = t.testimonialsDesc;
+            }
+        });
+
+        // Update CTA section
+        const ctaSection = document.querySelector('.cta-section');
+        if (ctaSection) {
+            const h2 = ctaSection.querySelector('h2');
+            const p = ctaSection.querySelector('p');
+            if (h2) h2.textContent = t.ctaTitle;
+            if (p) p.textContent = t.ctaDesc;
+
+            const buttons = ctaSection.querySelectorAll('.btn');
+            if (buttons.length >= 2) {
+                buttons[0].innerHTML = '<i class="fas fa-calendar-alt"></i> ' + t.ctaBtn1;
+                buttons[1].textContent = t.ctaBtn2;
+            }
+        }
+
+        // Update "View All Universities" button
+        const viewAllBtn = document.querySelector('.universities-section .text-center .btn');
+        if (viewAllBtn) {
+            viewAllBtn.innerHTML = t.viewAll + ' <i class="fas fa-arrow-right"></i>';
+        }
+
+        // Translate login modal
+        this.translateLoginModal();
+    }
+
+    translateLoginModal() {
+        const modalTranslations = {
+            en: {
+                title: 'Welcome Back',
+                subtitle: 'Sign in to access your account',
+                emailLabel: 'Email or Phone',
+                emailPlaceholder: 'Enter your email or phone',
+                passwordLabel: 'Password',
+                passwordPlaceholder: 'Enter your password',
+                loginBtn: 'Login',
+                noAccount: "Don't have an account?",
+                signUp: 'Sign up'
+            },
+            ru: {
+                title: 'С возвращением',
+                subtitle: 'Войдите в свой аккаунт',
+                emailLabel: 'Email или телефон',
+                emailPlaceholder: 'Введите email или телефон',
+                passwordLabel: 'Пароль',
+                passwordPlaceholder: 'Введите пароль',
+                loginBtn: 'Войти',
+                noAccount: 'Нет аккаунта?',
+                signUp: 'Регистрация'
+            },
+            kz: {
+                title: 'Қайта оралуыңызбен',
+                subtitle: 'Тіркелгіңізге кіріңіз',
+                emailLabel: 'Email немесе телефон',
+                emailPlaceholder: 'Email немесе телефонды енгізіңіз',
+                passwordLabel: 'Құпия сөз',
+                passwordPlaceholder: 'Құпия сөзді енгізіңіз',
+                loginBtn: 'Кіру',
+                noAccount: 'Тіркелгіңіз жоқ па?',
+                signUp: 'Тіркелу'
+            }
+        };
+
+        const t = modalTranslations[this.currentLanguage];
+        if (!t) return;
+
+        const modal = document.getElementById('loginModal');
+        if (!modal) return;
+
+        const title = modal.querySelector('.modal-header h2');
+        const subtitle = modal.querySelector('.modal-header p');
+        const labels = modal.querySelectorAll('.form-label');
+        const inputs = modal.querySelectorAll('.form-input');
+        const loginBtn = modal.querySelector('.btn-primary');
+        const footer = modal.querySelector('.modal-footer');
+
+        if (title) title.textContent = t.title;
+        if (subtitle) subtitle.textContent = t.subtitle;
+        if (labels[0]) labels[0].textContent = t.emailLabel;
+        if (labels[1]) labels[1].textContent = t.passwordLabel;
+        if (inputs[0]) inputs[0].placeholder = t.emailPlaceholder;
+        if (inputs[1]) inputs[1].placeholder = t.passwordPlaceholder;
+        if (loginBtn) loginBtn.textContent = t.loginBtn;
+        if (footer) footer.innerHTML = t.noAccount + ' <a href="#">' + t.signUp + '</a>';
     }
 
     updateProfileUI() {

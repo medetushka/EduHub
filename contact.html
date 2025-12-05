@@ -6,23 +6,21 @@
     <title>Contact - Assyl DataHub</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Core Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <!-- Common Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <style>
-
         /* Contact Section */
         .contact-section {
-            padding: 5rem 0;
-            background: var(--secondary-bg);
+            padding: 4rem 0;
+            background: var(--bg-cream);
         }
 
         .contact-container {
@@ -33,33 +31,24 @@
 
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .contact-info {
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-        }
-
-        .contact-form {
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
         }
 
         /* Contact Information */
+        .contact-info {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-info h2 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
         .contact-item {
             display: flex;
             align-items: flex-start;
@@ -69,79 +58,54 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
-            border-radius: 12px;
+            background: var(--primary-navy);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 1rem;
             flex-shrink: 0;
-        }
-
-        .contact-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-bg);
+            color: var(--accent-gold);
+            font-size: 1.25rem;
         }
 
         .contact-details h3 {
             color: var(--text-primary);
             margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
         }
 
         .contact-details p {
             color: var(--text-secondary);
             line-height: 1.5;
             margin-bottom: 0.3rem;
+            font-size: 0.95rem;
         }
 
         .contact-details a {
-            color: var(--accent-cyan);
+            color: var(--primary-navy);
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: var(--accent-green);
-        }
-
-        /* Contact Form */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
             font-weight: 500;
         }
 
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
+        .contact-details a:hover {
+            color: var(--accent-gold);
         }
 
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--accent-cyan);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
         }
 
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
+        .contact-form-wrapper h2 {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
         }
 
         .form-row {
@@ -153,19 +117,24 @@
         .submit-btn {
             width: 100%;
             padding: 1rem 2rem;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
-            color: var(--primary-bg);
+            background: var(--primary-navy);
+            color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .submit-btn:hover {
+            background: var(--primary-navy-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+            box-shadow: var(--shadow-medium);
         }
 
         .submit-btn:disabled {
@@ -176,8 +145,8 @@
 
         /* Support Section */
         .support-section {
-            padding: 3rem 0;
-            background: var(--primary-bg);
+            padding: 4rem 0;
+            background: var(--bg-white);
         }
 
         .support-container {
@@ -188,77 +157,75 @@
 
         .support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .support-card {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
             padding: 2rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
         }
 
         .support-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: var(--primary-navy);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
         }
 
         .support-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
+            background: var(--primary-navy);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .support-icon svg {
-            width: 30px;
-            height: 30px;
-            color: var(--primary-bg);
+            margin: 0 auto 1.25rem;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
         }
 
         .support-title {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            color: var(--primary-navy);
         }
 
         .support-description {
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
         }
 
         .support-button {
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.25rem;
             background: transparent;
-            color: var(--accent-cyan);
-            border: 2px solid var(--accent-cyan);
-            border-radius: 6px;
+            color: var(--primary-navy);
+            border: 2px solid var(--primary-navy);
+            border-radius: var(--radius-md);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all var(--transition-fast);
             display: inline-block;
+            font-size: 0.9rem;
         }
 
         .support-button:hover {
-            background: var(--accent-cyan);
-            color: var(--primary-bg);
+            background: var(--primary-navy);
+            color: white;
         }
 
         /* Office Locations */
         .locations-section {
-            padding: 3rem 0;
-            background: var(--secondary-bg);
+            padding: 4rem 0;
+            background: var(--bg-cream);
         }
 
         .locations-container {
@@ -270,50 +237,83 @@
         .locations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .location-card {
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
             padding: 2rem;
+            transition: all var(--transition-normal);
+        }
+
+        .location-card:hover {
+            box-shadow: var(--shadow-medium);
         }
 
         .location-header {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .location-flag {
             width: 40px;
-            height: 30px;
+            height: 28px;
             border-radius: 4px;
             margin-right: 1rem;
             object-fit: cover;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .location-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--primary-navy);
         }
 
         .location-address {
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .location-details p {
             color: var(--text-secondary);
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .location-details strong {
             color: var(--text-primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background: var(--primary-navy);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
         }
 
         /* Responsive Design */
@@ -341,17 +341,19 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo font-orbitron">Assyl DataHub</a>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">A</span>
+                Assyl DataHub
+            </a>
             
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link" data-translate="followDreams">FOLLOW YOUR DREAMS</a></li>
-                <li><a href="study-in-kazakhstan.html" class="nav-link" data-translate="studyKazakhstan">STUDY IN KAZAKHSTAN</a></li>
-                <li><a href="study-abroad.html" class="nav-link" data-translate="studyAbroad">STUDY ABROAD</a></li>
-                <li><a href="pricing.html" class="nav-link" data-translate="pricing">PRICING</a></li>
-                <li><a href="contact.html" class="nav-link active" data-translate="contact">CONTACT</a></li>
-                <li><a href="profile.html" class="nav-link" id="profileBtn" style="display: none;" data-translate="profile">PROFILE</a></li>
-                <li><a href="#" class="nav-link" id="loginBtn" onclick="showLoginModal()" data-translate="login">LOGIN</a></li>
-                <li><a href="#" class="nav-link" id="logoutBtn" style="display: none;" onclick="window.assylDataHub.logout()" data-translate="logout">LOGOUT</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="study-in-kazakhstan.html" class="nav-link">Study in Kazakhstan</a></li>
+                <li><a href="study-abroad.html" class="nav-link">Study Abroad</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="profile.html" class="nav-link" id="profileBtn" style="display: none;">Profile</a></li>
+                <li><a href="#" class="nav-link" id="loginBtn" onclick="showLoginModal()">Login</a></li>
             </ul>
 
             <div class="lang-switcher">
@@ -365,10 +367,10 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title font-orbitron" data-translate="contact">CONTACT</h1>
+            <h1 class="page-title">Contact <span class="page-title-accent">Us</span></h1>
             <p class="page-subtitle">
-                Get in touch with our team for support, partnerships, or any questions about your educational journey. 
-                We're here to help you succeed.
+                Have questions about your educational journey? Our team is here to help you 
+                find the right path to your dream university.
             </p>
         </div>
     </section>
@@ -379,53 +381,44 @@
             <div class="contact-grid">
                 <!-- Contact Information -->
                 <div class="contact-info">
-                    <h2 class="section-title">Get in Touch</h2>
+                    <h2>Get in Touch</h2>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                            </svg>
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>Email Support</h3>
+                            <h3>Email Us</h3>
                             <p>For general inquiries and support</p>
-                            <a href="mailto:support@assyldatahub.com">support@assyldatahub.com</a>
+                            <a href="mailto:info@assyldatahub.kz">info@assyldatahub.kz</a>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                            </svg>
+                            <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>Phone Support</h3>
+                            <h3>Call Us</h3>
                             <p>For urgent matters and consultations</p>
-                            <a href="tel:+77123456789">+7 (712) 345-6789</a>
+                            <a href="tel:+77271234567">+7 (727) 123-4567</a>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 104 0v-.5a6.012 6.012 0 012.706-1.912 1.5 1.5 0 01-.27-1.674 6.024 6.024 0 01-2.706-1.912 1.5 1.5 0 01-.27-1.674 6.024 6.024 0 01-2.706-1.912 1.5 1.5 0 01-.27-1.674A6.012 6.012 0 014.332 8.027z" clip-rule="evenodd"/>
-                            </svg>
+                            <i class="fas fa-comments"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Live Chat</h3>
                             <p>Instant support during business hours</p>
-                            <a href="#" onclick="openLiveChat()">Start Chat</a>
+                            <a href="#" onclick="openLiveChat(); return false;">Start a conversation</a>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                            </svg>
+                            <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-details">
                             <h3>Office Hours</h3>
@@ -437,51 +430,51 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="contact-form">
-                    <h2 class="section-title">Send us a Message</h2>
+                <div class="contact-form-wrapper">
+                    <h2>Send Us a Message</h2>
                     
                     <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label" for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required placeholder="Your first name">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required placeholder="Your last name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input">
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+7 (XXX) XXX-XXXX">
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="subject">Subject *</label>
-                            <select id="subject" name="subject" class="form-select" required>
+                            <select id="subject" name="subject" class="form-input" required>
                                 <option value="">Select a subject</option>
                                 <option value="general">General Inquiry</option>
-                                <option value="support">Technical Support</option>
+                                <option value="consultation">Request Consultation</option>
+                                <option value="university">University Information</option>
+                                <option value="application">Application Help</option>
                                 <option value="partnership">Partnership Opportunity</option>
-                                <option value="feedback">Feedback & Suggestions</option>
-                                <option value="billing">Billing & Payments</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="message">Message *</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Please describe your inquiry in detail..." required></textarea>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
                         </div>
 
                         <button type="submit" class="submit-btn" id="submitBtn">
-                            Send Message
+                            <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
                 </div>
@@ -492,62 +485,54 @@
     <!-- Support Options -->
     <section class="support-section">
         <div class="support-container">
-            <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Support Options</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-                Choose the support option that works best for you
-            </p>
+            <div class="section-title">
+                <h2>How Can We Help?</h2>
+                <p>Choose the support option that works best for you</p>
+            </div>
 
             <div class="support-grid">
                 <div class="support-card">
                     <div class="support-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
+                        <i class="fas fa-book-open"></i>
                     </div>
                     <h3 class="support-title">Help Center</h3>
                     <p class="support-description">
-                        Find answers to common questions, tutorials, and step-by-step guides in our comprehensive help center.
+                        Find answers to common questions, tutorials, and step-by-step guides.
                     </p>
                     <a href="#" class="support-button">Browse Articles</a>
                 </div>
 
                 <div class="support-card">
                     <div class="support-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/>
-                        </svg>
+                        <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="support-title">Video Tutorials</h3>
+                    <h3 class="support-title">Video Guides</h3>
                     <p class="support-description">
-                        Watch detailed video tutorials on how to use our platform features and make the most of your subscription.
+                        Watch detailed tutorials on how to use our platform and services.
                     </p>
                     <a href="#" class="support-button">Watch Videos</a>
                 </div>
 
                 <div class="support-card">
                     <div class="support-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                        </svg>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="support-title">Community Forum</h3>
+                    <h3 class="support-title">Community</h3>
                     <p class="support-description">
-                        Connect with other students and educational consultants in our community forum to share experiences and tips.
+                        Connect with other students and families to share experiences.
                     </p>
                     <a href="#" class="support-button">Join Community</a>
                 </div>
 
                 <div class="support-card">
                     <div class="support-icon">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                        </svg>
+                        <i class="fas fa-calendar-check"></i>
                     </div>
-                    <h3 class="support-title">Webinars</h3>
+                    <h3 class="support-title">Book Consultation</h3>
                     <p class="support-description">
-                        Attend live webinars on university selection, application strategies, and educational trends.
+                        Schedule a free consultation with our education counselors.
                     </p>
-                    <a href="#" class="support-button">View Schedule</a>
+                    <a href="#" class="support-button">Schedule Now</a>
                 </div>
             </div>
         </div>
@@ -556,16 +541,15 @@
     <!-- Office Locations -->
     <section class="locations-section">
         <div class="locations-container">
-            <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Our Locations</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-                Visit us at one of our offices around the world
-            </p>
+            <div class="section-title">
+                <h2>Our Offices</h2>
+                <p>Visit us at one of our locations</p>
+            </div>
 
             <div class="locations-grid">
                 <div class="location-card">
                     <div class="location-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%2300AFCA'/%3E%3Cpath d='M30,8 L35,18 L45,18 L37,25 L40,35 L30,28 L20,35 L23,25 L15,18 L25,18 Z' fill='%23FFD700'/%3E%3C/svg%3E" 
-                             alt="Kazakhstan Flag" class="location-flag">
+                        <img src="https://flagcdn.com/w80/kz.png" alt="Kazakhstan Flag" class="location-flag">
                         <h3 class="location-name">Kazakhstan - Headquarters</h3>
                     </div>
                     <div class="location-address">
@@ -575,56 +559,120 @@
                     </div>
                     <div class="location-details">
                         <p><strong>Phone:</strong> +7 (7172) 123-456</p>
-                        <p><strong>Email:</strong> kazakhstan@assyldatahub.com</p>
+                        <p><strong>Email:</strong> astana@assyldatahub.kz</p>
                         <p><strong>Hours:</strong> Mon-Fri 9:00-18:00</p>
                     </div>
                 </div>
 
                 <div class="location-card">
                     <div class="location-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%23B22234'/%3E%3Crect width='60' height='2.7' y='15.3' fill='%23FFFFFF'/%3E%3Crect width='60' height='2.7' y='22.7' fill='%23FFFFFF'/%3E%3C/svg%3E" 
-                             alt="USA Flag" class="location-flag">
-                        <h3 class="location-name">United States</h3>
+                        <img src="https://flagcdn.com/w80/kz.png" alt="Kazakhstan Flag" class="location-flag">
+                        <h3 class="location-name">Almaty Office</h3>
                     </div>
                     <div class="location-address">
-                        456 Education Boulevard<br>
-                        San Francisco, CA 94105<br>
-                        United States
+                        45 Dostyk Avenue<br>
+                        Almaty 050010<br>
+                        Kazakhstan
                     </div>
                     <div class="location-details">
-                        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                        <p><strong>Email:</strong> usa@assyldatahub.com</p>
-                        <p><strong>Hours:</strong> Mon-Fri 9:00-17:00 PST</p>
+                        <p><strong>Phone:</strong> +7 (727) 123-4567</p>
+                        <p><strong>Email:</strong> almaty@assyldatahub.kz</p>
+                        <p><strong>Hours:</strong> Mon-Fri 9:00-18:00</p>
                     </div>
                 </div>
 
                 <div class="location-card">
                     <div class="location-header">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%23012169'/%3E%3Cpath d='M30,8 L35,18 L45,18 L37,25 L40,35 L30,28 L20,35 L23,25 L15,18 L25,18 Z' fill='%23FFD700'/%3E%3C/svg%3E" 
-                             alt="UK Flag" class="location-flag">
-                        <h3 class="location-name">United Kingdom</h3>
+                        <img src="https://flagcdn.com/w80/ru.png" alt="Russia Flag" class="location-flag">
+                        <h3 class="location-name">Moscow Partner Office</h3>
                     </div>
                     <div class="location-address">
-                        789 University Street<br>
-                        London WC2E 9XY<br>
-                        United Kingdom
+                        78 Tverskaya Street<br>
+                        Moscow 125009<br>
+                        Russia
                     </div>
                     <div class="location-details">
-                        <p><strong>Phone:</strong> +44 20 7123 4567</p>
-                        <p><strong>Email:</strong> uk@assyldatahub.com</p>
-                        <p><strong>Hours:</strong> Mon-Fri 9:00-17:00 GMT</p>
+                        <p><strong>Phone:</strong> +7 (495) 123-4567</p>
+                        <p><strong>Email:</strong> moscow@assyldatahub.kz</p>
+                        <p><strong>Hours:</strong> Mon-Fri 10:00-19:00</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="background: var(--secondary-bg); padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color);">
+    <!-- CTA Section -->
+    <section class="cta-section">
         <div class="container">
-            <p style="color: var(--text-secondary);">&copy; 2025 Assyl DataHub. Empowering educational choices through technology.</p>
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Book a free consultation with our education experts and get personalized guidance for your university search.</p>
+                <a href="#" class="btn btn-accent btn-large">
+                    <i class="fas fa-calendar-alt"></i> Book Free Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Assyl DataHub</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Empowering students and families to make informed decisions about higher education.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="study-in-kazakhstan.html">Study in Kazakhstan</a></li>
+                        <li><a href="study-abroad.html">Study Abroad</a></li>
+                        <li><a href="pricing.html">Our Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> info@assyldatahub.kz</li>
+                        <li><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +7 (727) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Assyl DataHub. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideLoginModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email or Phone</label>
+                        <input type="text" id="emailOrPhone" class="form-input" required placeholder="Enter your email or phone">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="password" class="form-input" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Main JavaScript -->
     <script src="main.js"></script>
@@ -638,44 +686,52 @@
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Show loading state
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 
-                // Simulate form submission
                 setTimeout(() => {
-                    showNotification('Thank you! Your message has been sent successfully.', 'success');
+                    alert('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.');
                     contactForm.reset();
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                }, 2000);
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                }, 1500);
             });
 
             // Live chat functionality
             window.openLiveChat = function() {
-                showNotification('Live chat feature coming soon! Please use email or phone for immediate assistance.', 'info');
+                alert('Live chat feature coming soon! Please use email or phone for immediate assistance.');
             };
 
-            // Initialize animations
-            if (typeof anime !== 'undefined') {
-                anime({
-                    targets: '.contact-item, .support-card, .location-card',
-                    opacity: [0, 1],
-                    translateY: [30, 0],
-                    duration: 800,
-                    delay: anime.stagger(100),
-                    easing: 'easeOutExpo'
-                });
-            }
-
-            // Support card interactions
-            document.querySelectorAll('.support-button').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const supportType = this.closest('.support-card').querySelector('.support-title').textContent;
-                    showNotification(`${supportType} feature coming soon! Please contact us directly for assistance.`, 'info');
-                });
+            // Close modal on outside click
+            document.getElementById('loginModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideLoginModal();
+                }
             });
+        });
+
+        // Login modal functions
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function hideLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideLoginModal();
+            }
         });
     </script>
 </body>

@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - Assyl DataHub</title>
+    <title>My Profile - Assyl DataHub</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Core Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <!-- Common Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
     <style>
-
         /* Profile Section */
         .profile-section {
-            margin-top: 80px;
-            padding: 3rem 0;
-            min-height: calc(100vh - 80px);
+            margin-top: 72px;
+            padding: 2rem 0 4rem;
+            min-height: calc(100vh - 72px);
+            background: var(--bg-cream);
         }
 
         .profile-container {
@@ -33,136 +31,87 @@
             padding: 0 2rem;
         }
 
-        .profile-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .profile-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .profile-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
         /* Login Required State */
         .login-required {
             text-align: center;
-            padding: 5rem 0;
+            padding: 5rem 2rem;
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-soft);
+            max-width: 500px;
+            margin: 3rem auto;
         }
 
         .login-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
+            width: 80px;
+            height: 80px;
+            background: var(--primary-navy);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 2rem;
-        }
-
-        .login-icon svg {
-            width: 50px;
-            height: 50px;
-            color: var(--primary-bg);
+            margin: 0 auto 1.5rem;
+            color: var(--accent-gold);
+            font-size: 2rem;
         }
 
         .login-title {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 1.75rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: var(--primary-navy);
         }
 
         .login-description {
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .login-btn {
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
-            color: var(--primary-bg);
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+            line-height: 1.6;
         }
 
         /* Profile Dashboard */
         .profile-dashboard {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
 
         /* Profile Sidebar */
         .profile-sidebar {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
             padding: 2rem;
             height: fit-content;
+            box-shadow: var(--shadow-soft);
         }
 
         .profile-avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
+            margin: 0 auto 1.25rem;
+            background: var(--primary-navy);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-avatar.fallback {
-            font-size: 3rem;
-            color: var(--primary-bg);
+            color: var(--accent-gold);
+            font-size: 2.5rem;
             font-weight: 700;
+            font-family: 'Playfair Display', serif;
         }
 
         .profile-name {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            color: var(--primary-navy);
         }
 
         .profile-email {
             text-align: center;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
@@ -170,35 +119,49 @@
         .profile-menu {
             list-style: none;
             padding: 0;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
         }
 
         .profile-menu li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .profile-menu a {
-            display: block;
-            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
             color: var(--text-secondary);
             text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            font-weight: 500;
         }
 
-        .profile-menu a:hover,
+        .profile-menu a:hover {
+            background: var(--bg-cream);
+            color: var(--primary-navy);
+        }
+
         .profile-menu a.active {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--accent-cyan);
-            border-left: 3px solid var(--accent-cyan);
+            background: var(--primary-navy);
+            color: white;
+        }
+
+        .profile-menu a i {
+            width: 20px;
+            text-align: center;
         }
 
         /* Profile Content */
         .profile-content {
-            background: var(--secondary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
             padding: 2rem;
             min-height: 500px;
+            box-shadow: var(--shadow-soft);
         }
 
         .content-section {
@@ -207,11 +170,11 @@
 
         .content-section.active {
             display: block;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.4s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -221,102 +184,119 @@
             align-items: center;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-size: 1.35rem;
+            color: var(--primary-navy);
         }
 
-        /* Dashboard Overview */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
             margin-bottom: 2rem;
         }
 
         .stat-card {
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
             padding: 1.5rem;
             text-align: center;
         }
 
-        .stat-value {
+        .stat-card .stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
             font-size: 2rem;
             font-weight: 700;
-            color: var(--accent-cyan);
-            margin-bottom: 0.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 0.25rem;
         }
 
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .stat-card .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
-        /* Saved Universities */
+        /* University Cards */
         .universities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
         }
 
         .university-card {
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
             padding: 1.5rem;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
         }
 
         .university-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-2px);
+            border-color: var(--primary-navy);
+            box-shadow: var(--shadow-soft);
         }
 
         .university-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .university-name {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.2rem;
+            color: var(--primary-navy);
+            margin-bottom: 0.25rem;
         }
 
         .university-location {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
         .remove-btn {
             background: none;
             border: none;
-            color: #ff4444;
+            color: var(--error);
             cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0.2rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            font-size: 1.25rem;
+            padding: 0.25rem;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            line-height: 1;
         }
 
         .remove-btn:hover {
-            background: rgba(255, 68, 68, 0.1);
+            background: rgba(231, 76, 60, 0.1);
         }
 
-        /* Comparisons */
+        .university-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .university-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .university-actions .btn {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        /* Comparison Items */
         .comparison-item {
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
             padding: 1.5rem;
             margin-bottom: 1rem;
         }
@@ -330,11 +310,11 @@
 
         .comparison-title {
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--primary-navy);
         }
 
         .comparison-date {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.8rem;
         }
 
@@ -345,11 +325,12 @@
         }
 
         .university-tag {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--accent-cyan);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+            background: var(--bg-white);
+            color: var(--primary-navy);
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
             font-size: 0.8rem;
+            border: 1px solid var(--border-light);
         }
 
         /* Settings */
@@ -358,104 +339,139 @@
         }
 
         .settings-section h3 {
-            color: var(--text-primary);
+            color: var(--primary-navy);
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .setting-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
-            background: var(--primary-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.75rem;
         }
 
         .setting-info h4 {
             color: var(--text-primary);
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
         }
 
         .setting-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0;
         }
 
         .toggle-switch {
             position: relative;
-            width: 50px;
-            height: 24px;
-            background: var(--border-color);
-            border-radius: 12px;
+            width: 48px;
+            height: 26px;
+            background: var(--border-medium);
+            border-radius: 13px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background var(--transition-fast);
         }
 
         .toggle-switch.active {
-            background: var(--accent-cyan);
+            background: var(--primary-navy);
         }
 
         .toggle-switch::after {
             content: '';
             position: absolute;
-            top: 2px;
-            left: 2px;
+            top: 3px;
+            left: 3px;
             width: 20px;
             height: 20px;
             background: white;
             border-radius: 50%;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-fast);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         .toggle-switch.active::after {
-            transform: translateX(26px);
+            transform: translateX(22px);
         }
 
-        /* Buttons */
-        .btn {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
+        /* Activity Section */
+        .activity-card {
+            background: var(--bg-cream);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-green));
-            color: var(--primary-bg);
+        .activity-card h3 {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
-        .btn-secondary {
-            background: transparent;
+        .activity-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .activity-list li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .activity-list li i {
+            color: var(--accent-gold);
+            width: 16px;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
             color: var(--text-primary);
-            border: 2px solid var(--accent-cyan);
+            margin-bottom: 0.5rem;
         }
 
+        .empty-state p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Button Styles */
         .btn-danger {
-            background: #ff4444;
+            background: var(--error);
             color: white;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        .btn-danger:hover {
+            background: #c0392b;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-menu {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .profile-title {
-                font-size: 2rem;
+            .profile-section {
+                margin-top: 120px;
             }
 
             .profile-dashboard {
@@ -470,6 +486,12 @@
             .universities-grid {
                 grid-template-columns: 1fr;
             }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -477,17 +499,19 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo font-orbitron">Assyl DataHub</a>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">A</span>
+                Assyl DataHub
+            </a>
             
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link" data-translate="followDreams">FOLLOW YOUR DREAMS</a></li>
-                <li><a href="study-in-kazakhstan.html" class="nav-link" data-translate="studyKazakhstan">STUDY IN KAZAKHSTAN</a></li>
-                <li><a href="study-abroad.html" class="nav-link" data-translate="studyAbroad">STUDY ABROAD</a></li>
-                <li><a href="pricing.html" class="nav-link" data-translate="pricing">PRICING</a></li>
-                <li><a href="contact.html" class="nav-link" data-translate="contact">CONTACT</a></li>
-                <li><a href="profile.html" class="nav-link active" id="profileBtn" data-translate="profile">PROFILE</a></li>
-                <li><a href="#" class="nav-link" id="loginBtn" onclick="showLoginModal()" data-translate="login">LOGIN</a></li>
-                <li><a href="#" class="nav-link" id="logoutBtn" onclick="window.assylDataHub.logout()" data-translate="logout">LOGOUT</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="study-in-kazakhstan.html" class="nav-link">Study in Kazakhstan</a></li>
+                <li><a href="study-abroad.html" class="nav-link">Study Abroad</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="profile.html" class="nav-link active" id="profileBtn">Profile</a></li>
+                <li><a href="#" class="nav-link" id="loginBtn" onclick="showLoginModal()">Login</a></li>
             </ul>
 
             <div class="lang-switcher">
@@ -498,45 +522,47 @@
         </div>
     </nav>
 
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">My <span class="page-title-accent">Profile</span></h1>
+            <p class="page-subtitle">
+                Manage your saved universities, track applications, and customize your preferences.
+            </p>
+        </div>
+    </section>
+
     <!-- Profile Section -->
     <section class="profile-section">
         <div class="profile-container">
-            <!-- Profile Header -->
-            <div class="profile-header">
-                <h1 class="profile-title font-orbitron">My Profile</h1>
-                <p class="profile-subtitle">Manage your educational journey and preferences</p>
-            </div>
-
             <!-- Login Required State -->
             <div id="loginRequired" class="login-required" style="display: none;">
                 <div class="login-icon">
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
-                    </svg>
+                    <i class="fas fa-user"></i>
                 </div>
                 <h2 class="login-title">Please Log In</h2>
                 <p class="login-description">
                     Access your personalized dashboard, saved universities, and comparison tools by logging into your account.
                 </p>
-                <button class="login-btn" onclick="showLoginModal()">Log In to Your Account</button>
+                <button class="btn btn-primary btn-large" onclick="showLoginModal()">
+                    <i class="fas fa-sign-in-alt"></i> Log In to Your Account
+                </button>
             </div>
 
             <!-- Profile Dashboard -->
-            <div id="profileDashboard" class="profile-dashboard" style="display: none;">
+            <div id="profileDashboard" class="profile-dashboard">
                 <!-- Profile Sidebar -->
                 <div class="profile-sidebar">
-                    <div class="profile-avatar fallback" id="profileAvatar">
-                        A
-                    </div>
-                    <h3 class="profile-name" id="profileName">Anonymous User</h3>
-                    <p class="profile-email" id="profileEmail">user@example.com</p>
+                    <div class="profile-avatar" id="profileAvatar">A</div>
+                    <h3 class="profile-name" id="profileName">Demo User</h3>
+                    <p class="profile-email" id="profileEmail">demo@example.com</p>
 
                     <ul class="profile-menu">
-                        <li><a href="#" class="active" data-section="dashboard">Dashboard</a></li>
-                        <li><a href="#" data-section="saved">Saved Universities</a></li>
-                        <li><a href="#" data-section="comparisons">My Comparisons</a></li>
-                        <li><a href="#" data-section="applications">Applications</a></li>
-                        <li><a href="#" data-section="settings">Settings</a></li>
+                        <li><a href="#" class="active" data-section="dashboard"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                        <li><a href="#" data-section="saved"><i class="fas fa-heart"></i> Saved Universities</a></li>
+                        <li><a href="#" data-section="comparisons"><i class="fas fa-balance-scale"></i> My Comparisons</a></li>
+                        <li><a href="#" data-section="applications"><i class="fas fa-file-alt"></i> Applications</a></li>
+                        <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
                     </ul>
                 </div>
 
@@ -546,16 +572,16 @@
                     <div class="content-section active" id="dashboard">
                         <div class="section-header">
                             <h2 class="section-title">Dashboard Overview</h2>
-                            <button class="btn btn-primary">Export Data</button>
+                            <button class="btn btn-secondary btn-small"><i class="fas fa-download"></i> Export Data</button>
                         </div>
 
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-value" id="savedCount">0</div>
+                                <div class="stat-value" id="savedCount">3</div>
                                 <div class="stat-label">Saved Universities</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-value" id="comparisonCount">0</div>
+                                <div class="stat-value" id="comparisonCount">2</div>
                                 <div class="stat-label">Comparisons Made</div>
                             </div>
                             <div class="stat-card">
@@ -568,14 +594,14 @@
                             </div>
                         </div>
 
-                        <div style="background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; margin-top: 2rem;">
-                            <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Recent Activity</h3>
-                            <div style="color: var(--text-secondary); line-height: 1.6;">
-                                <p>• Viewed Al-Farabi Kazakh National University</p>
-                                <p>• Compared 3 universities</p>
-                                <p>• Updated profile preferences</p>
-                                <p>• Searched for Computer Science programs</p>
-                            </div>
+                        <div class="activity-card">
+                            <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                            <ul class="activity-list">
+                                <li><i class="fas fa-eye"></i> Viewed Al-Farabi Kazakh National University</li>
+                                <li><i class="fas fa-balance-scale"></i> Compared 3 universities</li>
+                                <li><i class="fas fa-user-edit"></i> Updated profile preferences</li>
+                                <li><i class="fas fa-search"></i> Searched for Computer Science programs</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -583,7 +609,7 @@
                     <div class="content-section" id="saved">
                         <div class="section-header">
                             <h2 class="section-title">Saved Universities</h2>
-                            <button class="btn btn-secondary">Find More</button>
+                            <a href="study-in-kazakhstan.html" class="btn btn-primary btn-small"><i class="fas fa-plus"></i> Find More</a>
                         </div>
 
                         <div class="universities-grid" id="savedUniversities">
@@ -591,16 +617,14 @@
                                 <div class="university-header">
                                     <div>
                                         <h4 class="university-name">Al-Farabi Kazakh National University</h4>
-                                        <p class="university-location">Almaty, Kazakhstan</p>
+                                        <p class="university-location"><i class="fas fa-map-marker-alt"></i> Almaty, Kazakhstan</p>
                                     </div>
-                                    <button class="remove-btn" onclick="removeUniversity('kaznu')">×</button>
+                                    <button class="remove-btn" onclick="removeUniversity(this)">×</button>
                                 </div>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                                    #166 World Ranking • 20,000+ students
-                                </p>
-                                <div style="display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Details</button>
-                                    <button class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Compare</button>
+                                <p class="university-info">#166 World Ranking • 20,000+ students</p>
+                                <div class="university-actions">
+                                    <a href="study-in-kazakhstan.html#kaznu" class="btn btn-primary">View Details</a>
+                                    <button class="btn btn-secondary">Compare</button>
                                 </div>
                             </div>
 
@@ -608,16 +632,14 @@
                                 <div class="university-header">
                                     <div>
                                         <h4 class="university-name">Nazarbayev University</h4>
-                                        <p class="university-location">Astana, Kazakhstan</p>
+                                        <p class="university-location"><i class="fas fa-map-marker-alt"></i> Astana, Kazakhstan</p>
                                     </div>
-                                    <button class="remove-btn" onclick="removeUniversity('nazarbayev')">×</button>
+                                    <button class="remove-btn" onclick="removeUniversity(this)">×</button>
                                 </div>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                                    #400 World Ranking • 9,000+ students
-                                </p>
-                                <div style="display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Details</button>
-                                    <button class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Compare</button>
+                                <p class="university-info">#400 World Ranking • 9,000+ students</p>
+                                <div class="university-actions">
+                                    <a href="study-in-kazakhstan.html#nazarbayev" class="btn btn-primary">View Details</a>
+                                    <button class="btn btn-secondary">Compare</button>
                                 </div>
                             </div>
 
@@ -625,16 +647,14 @@
                                 <div class="university-header">
                                     <div>
                                         <h4 class="university-name">Kazakh National Medical University</h4>
-                                        <p class="university-location">Almaty, Kazakhstan</p>
+                                        <p class="university-location"><i class="fas fa-map-marker-alt"></i> Almaty, Kazakhstan</p>
                                     </div>
-                                    <button class="remove-btn" onclick="removeUniversity('kaznmu')">×</button>
+                                    <button class="remove-btn" onclick="removeUniversity(this)">×</button>
                                 </div>
-                                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                                    #1000 World Ranking • 10,000+ students
-                                </p>
-                                <div style="display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Details</button>
-                                    <button class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Compare</button>
+                                <p class="university-info">#1000 World Ranking • 10,000+ students</p>
+                                <div class="university-actions">
+                                    <a href="study-in-kazakhstan.html#kaznmu" class="btn btn-primary">View Details</a>
+                                    <button class="btn btn-secondary">Compare</button>
                                 </div>
                             </div>
                         </div>
@@ -644,7 +664,7 @@
                     <div class="content-section" id="comparisons">
                         <div class="section-header">
                             <h2 class="section-title">My Comparisons</h2>
-                            <button class="btn btn-primary">New Comparison</button>
+                            <button class="btn btn-primary btn-small"><i class="fas fa-plus"></i> New Comparison</button>
                         </div>
 
                         <div id="comparisonsList">
@@ -656,11 +676,11 @@
                                 <div class="university-tags">
                                     <span class="university-tag">Al-Farabi KazNU</span>
                                     <span class="university-tag">Nazarbayev University</span>
-                                    <span class="university-tag">Kazakh Medical University</span>
+                                    <span class="university-tag">Medical University</span>
                                 </div>
                                 <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Comparison</button>
-                                    <button class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Export</button>
+                                    <button class="btn btn-primary btn-small">View Comparison</button>
+                                    <button class="btn btn-secondary btn-small">Export PDF</button>
                                 </div>
                             </div>
 
@@ -674,8 +694,8 @@
                                     <span class="university-tag">Astana Medical University</span>
                                 </div>
                                 <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-primary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Comparison</button>
-                                    <button class="btn btn-secondary btn-sm" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Export</button>
+                                    <button class="btn btn-primary btn-small">View Comparison</button>
+                                    <button class="btn btn-secondary btn-small">Export PDF</button>
                                 </div>
                             </div>
                         </div>
@@ -685,17 +705,13 @@
                     <div class="content-section" id="applications">
                         <div class="section-header">
                             <h2 class="section-title">Application Tracking</h2>
-                            <button class="btn btn-primary">Add Application</button>
+                            <button class="btn btn-primary btn-small"><i class="fas fa-plus"></i> Add Application</button>
                         </div>
 
-                        <div style="background: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; text-align: center;">
-                            <div style="color: var(--text-secondary); margin-bottom: 1rem;">
-                                <svg style="width: 64px; height: 64px; margin: 0 auto 1rem;" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
-                                </svg>
-                                <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">No Applications Yet</h3>
-                                <p>Start tracking your university applications here</p>
-                            </div>
+                        <div class="empty-state">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>No Applications Yet</h3>
+                            <p>Start tracking your university applications to stay organized throughout the process.</p>
                             <button class="btn btn-primary">Add Your First Application</button>
                         </div>
                     </div>
@@ -704,11 +720,11 @@
                     <div class="content-section" id="settings">
                         <div class="section-header">
                             <h2 class="section-title">Account Settings</h2>
-                            <button class="btn btn-primary">Save Changes</button>
+                            <button class="btn btn-primary btn-small"><i class="fas fa-save"></i> Save Changes</button>
                         </div>
 
                         <div class="settings-section">
-                            <h3>Preferences</h3>
+                            <h3>Notifications</h3>
                             <div class="setting-item">
                                 <div class="setting-info">
                                     <h4>Email Notifications</h4>
@@ -718,17 +734,17 @@
                             </div>
                             <div class="setting-item">
                                 <div class="setting-info">
-                                    <h4>Browser Notifications</h4>
-                                    <p>Get instant notifications about important updates</p>
+                                    <h4>Application Reminders</h4>
+                                    <p>Get reminded about upcoming deadlines</p>
                                 </div>
-                                <div class="toggle-switch" onclick="toggleSetting(this)"></div>
+                                <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
                             </div>
                             <div class="setting-item">
                                 <div class="setting-info">
-                                    <h4>Marketing Communications</h4>
-                                    <p>Receive information about partner universities and services</p>
+                                    <h4>Newsletter</h4>
+                                    <p>Weekly tips and university news</p>
                                 </div>
-                                <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
+                                <div class="toggle-switch" onclick="toggleSetting(this)"></div>
                             </div>
                         </div>
 
@@ -737,26 +753,19 @@
                             <div class="setting-item">
                                 <div class="setting-info">
                                     <h4>Profile Visibility</h4>
-                                    <p>Allow other users to see your profile</p>
+                                    <p>Allow counselors to view your profile</p>
                                 </div>
                                 <div class="toggle-switch" onclick="toggleSetting(this)"></div>
-                            </div>
-                            <div class="setting-item">
-                                <div class="setting-info">
-                                    <h4>Data Analytics</h4>
-                                    <p>Help us improve by sharing anonymous usage data</p>
-                                </div>
-                                <div class="toggle-switch active" onclick="toggleSetting(this)"></div>
                             </div>
                         </div>
 
                         <div class="settings-section">
                             <h3>Account Actions</h3>
-                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                                <button class="btn btn-secondary">Change Password</button>
-                                <button class="btn btn-secondary">Update Email</button>
-                                <button class="btn btn-secondary">Download My Data</button>
-                                <button class="btn btn-danger" onclick="confirmDeleteAccount()">Delete Account</button>
+                            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                                <button class="btn btn-secondary btn-small">Change Password</button>
+                                <button class="btn btn-secondary btn-small">Update Email</button>
+                                <button class="btn btn-secondary btn-small">Download My Data</button>
+                                <button class="btn btn-danger btn-small" onclick="confirmDeleteAccount()">Delete Account</button>
                             </div>
                         </div>
                     </div>
@@ -766,20 +775,70 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: var(--secondary-bg); padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color);">
+    <footer>
         <div class="container">
-            <p style="color: var(--text-secondary);">&copy; 2025 Assyl DataHub. Empowering educational choices through technology.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Assyl DataHub</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Empowering students and families to make informed decisions about higher education.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="study-in-kazakhstan.html">Study in Kazakhstan</a></li>
+                        <li><a href="study-abroad.html">Study Abroad</a></li>
+                        <li><a href="pricing.html">Our Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> info@assyldatahub.kz</li>
+                        <li><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +7 (727) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Assyl DataHub. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideLoginModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email or Phone</label>
+                        <input type="text" id="emailOrPhone" class="form-input" required placeholder="Enter your email or phone">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="password" class="form-input" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Main JavaScript -->
     <script src="main.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in
-            checkLoginStatus();
-
             // Profile menu functionality
             const menuLinks = document.querySelectorAll('.profile-menu a');
             const contentSections = document.querySelectorAll('.content-section');
@@ -790,11 +849,9 @@
                     
                     const sectionId = this.dataset.section;
                     
-                    // Update active menu item
                     menuLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Show corresponding content section
                     contentSections.forEach(section => {
                         section.classList.remove('active');
                         if (section.id === sectionId) {
@@ -804,80 +861,55 @@
                 });
             });
 
-            // Initialize animations
-            if (typeof anime !== 'undefined') {
-                anime({
-                    targets: '.stat-card, .university-card, .comparison-item',
-                    opacity: [0, 1],
-                    translateY: [30, 0],
-                    duration: 800,
-                    delay: anime.stagger(100),
-                    easing: 'easeOutExpo'
-                });
-            }
+            // Close modal on outside click
+            document.getElementById('loginModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hideLoginModal();
+                }
+            });
         });
 
-        function checkLoginStatus() {
-            const loginRequired = document.getElementById('loginRequired');
-            const profileDashboard = document.getElementById('profileDashboard');
-            
-            if (window.assylDataHub && window.assylDataHub.currentUser) {
-                loginRequired.style.display = 'none';
-                profileDashboard.style.display = 'grid';
-                updateProfileInfo();
-            } else {
-                loginRequired.style.display = 'block';
-                profileDashboard.style.display = 'none';
-            }
-        }
-
-        function updateProfileInfo() {
-            if (window.assylDataHub && window.assylDataHub.currentUser) {
-                const user = window.assylDataHub.currentUser;
-                const profileName = document.getElementById('profileName');
-                const profileEmail = document.getElementById('profileEmail');
-                
-                if (user.email) {
-                    profileName.textContent = user.email.split('@')[0];
-                    profileEmail.textContent = user.email;
-                } else if (user.phone) {
-                    profileName.textContent = 'User ' + user.phone.slice(-4);
-                    profileEmail.textContent = user.phone;
-                }
-            }
-        }
-
-        function removeUniversity(universityId) {
-            showNotification('University removed from saved list', 'success');
-            // Remove the card from DOM
-            event.target.closest('.university-card').style.animation = 'fadeOut 0.3s ease-in-out';
-            setTimeout(() => {
-                event.target.closest('.university-card').remove();
-            }, 300);
+        function removeUniversity(btn) {
+            const card = btn.closest('.university-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(-10px)';
+            setTimeout(() => card.remove(), 300);
+            alert('University removed from your saved list.');
         }
 
         function toggleSetting(toggle) {
             toggle.classList.toggle('active');
-            const settingName = toggle.previousElementSibling.querySelector('h4').textContent;
-            const isActive = toggle.classList.contains('active');
-            showNotification(`${settingName} ${isActive ? 'enabled' : 'disabled'}`, 'info');
         }
 
         function confirmDeleteAccount() {
             if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-                showNotification('Account deletion request submitted. Please check your email for confirmation.', 'info');
+                alert('Account deletion request submitted. Please check your email for confirmation.');
             }
         }
 
-        // Add fade out animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeOut {
-                from { opacity: 1; transform: translateY(0); }
-                to { opacity: 0; transform: translateY(-20px); }
+        // Login modal functions
+        function showLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             }
-        `;
-        document.head.appendChild(style);
+        }
+
+        function hideLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideLoginModal();
+            }
+        });
     </script>
 </body>
 </html>
